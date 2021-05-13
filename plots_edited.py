@@ -25,6 +25,7 @@ from utils.metrics import fitness
 matplotlib.rc('font', **{'size': 11})
 matplotlib.use('Agg')  # for writing to files only
 
+# used to store previous laser length pixel
 global prev_laser
 prev_laser = 518
 
@@ -61,13 +62,17 @@ def plot_one_box(x, img, color=None, label=None, line_thickness=3):
     # Plots one bounding box on image img
     tl = line_thickness or round(0.002 * (img.shape[0] + img.shape[1]) / 2) + 1  # line/font thickness
     color = color or [random.randint(0, 255) for _ in range(3)]
+
+    # this is my choice, purple, BGR!
     color = [144, 21, 105]
 
+    # returns 4 points of the rectangle, not x,y,width,height!
     c1, c2 = (int(x[0]), int(x[1])), (int(x[2]), int(x[3]))
 
     # rectangle of detected class
     cv2.rectangle(img, c1, c2, color, thickness=tl, lineType=cv2.LINE_AA)
 
+    # find out the pixel numbers between two laser dots
     laser = laser_length(img)
     # laser = 518
     if laser != 0:
@@ -77,28 +82,22 @@ def plot_one_box(x, img, color=None, label=None, line_thickness=3):
     # m and b constants are calculated via linear equation formula
     # y = (m*x) + b where y is the crab pixels,
     # x is the l_factor(highest length of one side of bounding box)
-        
     m = 0.576
     b = 1.136
     x1 = c1[0]
     y1 = c1[1]
-    w1 = abs(c2[0] - c1[0])
-    h1 = abs(c2[1] - c1[1])
+    w1 = abs(c2[0] - c1[0]) # width of the rectangle
+    h1 = abs(c2[1] - c1[1]) # height of the rectangle
 
-    #l_factor = (math.sqrt(((abs(h1))**2)+((abs(w1))**2)))/3
-    # y = (m*x) + b
-    #crab_px = (l_factor/2)
     if w1 >= h1:
         l_factor = w1
     else:
         l_factor = h1
-    
+    # y = (m*x) + b
     crab_px = (m * l_factor) + b
     length_measurement = round((crab_px * 22.86) / (laser * 2), 2)
     font = cv2.FONT_HERSHEY_SIMPLEX
     length_crab_cm = " length: " + str(length_measurement) + "cm"
-    #print("crab_px", crab_px)
-    #print(length_crab_cm)
     label = label + length_crab_cm
 
     if label:
@@ -106,15 +105,12 @@ def plot_one_box(x, img, color=None, label=None, line_thickness=3):
         t_size = cv2.getTextSize(label, 0, fontScale=tl / 3, thickness=tf)[0]
         c2 = c1[0] + t_size[0], c1[1] - t_size[1] - 3
 
-        #cv2.putText(img, "length: " + str(length_measurement) + "cm", (x1, y1 + h1 - 5), font, 1, (0, 255, 0), 3)
         cv2.rectangle(img, c1, c2, color, -1, cv2.LINE_AA)  # filled
         cv2.putText(img, label, (c1[0], c1[1] - 2), 0, tl / 3, [225, 255, 255], thickness=tf, lineType=cv2.LINE_AA)
 
         _, width, _ = img.shape
         cv2.putText(img, "laser length: " + str(round(22.86, 2)) + "cm for " + str(round(laser, 2)) + "pixel",
                     (int(width / 2) - 300, 40), font, 1, (0, 255, 0), 2)
-
-
 
 def laser_length(img):
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
@@ -128,7 +124,6 @@ def laser_length(img):
     # masking
     mask = cv2.inRange(hsv, light_red, dark_red)
     result = cv2.bitwise_and(img, img, mask=mask)
-    #cv2.imshow("laser_mask", result)
     gray_result = cv2.cvtColor(result, cv2.COLOR_BGR2GRAY)
 
     # threshold
@@ -149,6 +144,7 @@ def laser_length(img):
                               param1=param1, param2=param2,
                               minRadius=minRadius, maxRadius=maxRadius)
 
+    # store laser points/dots
     points = []
     if circles is not None:
         circles = np.uint16(np.around(circles))
@@ -163,12 +159,7 @@ def laser_length(img):
                 continue
             points.append(center)
             radius = 15
-            #print(center)
-            #cv2.circle(threshed, center, radius, (0, 0, 255), 3)
-            #cv2.circle(gray_result, center, radius, (0, 0, 255), 3)
-    #cv2.line(threshed, points[0], points[1], (0, 0, 255), 3)
-    #cv2.imshow("laser_gray_mask", threshed)
-    #print("points", len(points))
+    # used to prevent minimal errors of laser dot detection
     if len(points) < 2:
         return 0
     p1 = points[0]
