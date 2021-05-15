@@ -66,7 +66,7 @@ Original `detect.py` and `utils.plots.py` files are modified as `detect_crab.py`
 
 # 3. How to Detect Yourself?
 
-You can simply follow [my colab tutorial](https://colab.research.google.com/github/OnurcanKoken/Crab_Detection_YOLOv5L/blob/main/Crab_Detection_Colab_YOLOv5.ipynb) which was explained in detail.
+You can simply follow [my colab tutorial](https://colab.research.google.com/github/OnurcanKoken/Crab_Detection_YOLOv5L/blob/main/Colab_Crab_Detection_YOLOv5/Crab_Detection_Colab_YOLOv5.ipynb) which was explained in detail.
 
 - Download original YOLOv5 repository and extract the files - Install Dependencies
 - Download the custom dataset
