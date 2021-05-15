@@ -1,6 +1,6 @@
 # Crab_Detection_YOLOv5L
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/OnurcanKoken/Crab_Detection_YOLOv5L/blob/main/Crab_Detection_Colab_YOLOv5.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/OnurcanKoken/Crab_Detection_YOLOv5L/blob/main/Colab_Crab_Detection_YOLOv5/Crab_Detection_Colab_YOLOv5.ipynb)
 
 ![GitHub followers](https://img.shields.io/github/followers/OnurcanKoken?style=social)
 ![Twitter Follow](https://img.shields.io/twitter/follow/onurcankoken?style=social)
@@ -75,9 +75,9 @@ You can simply follow [my colab tutorial](https://colab.research.google.com/gith
 - Download the custom dataset
 - Define Model Configuration and Architecture
   
-Important! You need to replace and use my [`detect.py` file](Python Files/detect_crab.py) and [`plots.py`(in the utils folder) file](Python Files/plots_crab.py) to detect the crabs by yourself!
+Important! You need to replace and use my [`detect.py` file](Python_Files/detect_crab.py) and [`plots.py`(in the utils folder) file](Python_Files/plots_crab.py) to detect the crabs by yourself!
 
-Besides, I have preferred to use large one instead of s, m or x. You can use any of these as you wish. [TIP](Python Files/hubconf.py)
+Besides, I have preferred to use large one instead of s, m or x. You can use any of these as you wish. [TIP](Python_Files/hubconf.py)
 
 - Train Custom Yolov5 Detector
 - Evaluate Custom Yolov5 Detector Performance
