@@ -2,9 +2,6 @@
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/OnurcanKoken/Crab_Detection_YOLOv5L/blob/main/Colab_Crab_Detection_YOLOv5/Crab_Detection_Colab_YOLOv5.ipynb)
 
-![GitHub followers](https://img.shields.io/github/followers/OnurcanKoken?style=social)
-![Twitter Follow](https://img.shields.io/twitter/follow/onurcankoken?style=social)
-
 On this repository, I want to share my work to detect Chionoecetes Tanneri Crabs and estimate their lengths for [the 2021 Machine Learning MATE ROV Microsoft Azure Computer Coding Challenge Task 1](https://files.materovcompetition.org/2021/Computer_Coding_Challenge_Round_1.pdf).
 
 ![The Competition](Dataset_Photos/MATEROV.PNG)
@@ -69,7 +66,7 @@ Original `detect.py` and `utils.plots.py` files are modified as `detect_crab.py`
 
 # 3. How to Detect Yourself?
 
-You can simply follow [my colab tutorial](https://colab.research.google.com/github/OnurcanKoken/Crab_Detection_YOLOv5L/blob/main/Crab_Detection_Colab_YOLOv5.ipynb) which was explained in detail.
+You can simply follow [my colab tutorial](https://colab.research.google.com/github/OnurcanKoken/Crab_Detection_YOLOv5L/blob/main/Colab_Crab_Detection_YOLOv5/Crab_Detection_Colab_YOLOv5.ipynb) which was explained in detail.
 
 - Download original YOLOv5 repository and extract the files - Install Dependencies
 - Download the custom dataset
