@@ -84,7 +84,7 @@ Besides, I have preferred to use large one instead of s, m or x. You can use any
 
 # 4. My Observations About the Task
 
-It was quite fund and I have learned a lot by this project. This was my first time to use YOLO in a project like this one. I was not able to extract each time and create a time table as a result and could not be able to attend the competition on time but I wanted to share this work anyway since I really enjoyed! I am still learning how to use Microsft Azure by the way, I hope to learn to use in a short time. Additionally, i am planning to improve myself on Computer Vision and complete more projects soon.
+It was quite fun and I have learned a lot by this project. This was my first time to use YOLO in a project like this one. I was not able to extract each time and create a time table as a result and could not be able to attend the competition on time but I wanted to share this work anyway since I really enjoyed! I am still learning how to use Microsoft Azure by the way, I hope to learn to use in a short time. Additionally, i am planning to improve myself on Computer Vision and complete more projects soon.
 
 # 5. Discussion
 
